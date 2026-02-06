@@ -1,0 +1,12 @@
+include partials/header.pug
+
+div.my-button
+  if loggedIn .User
+    form(action="/dashboard")
+      button.button.is-success.is-rounded.is-large.custom-button(type="submit")
+        | Go to Dashboard
+  else
+    form(action="/auth/login")
+      button.button.is-primary.is-rounded.is-large.custom-button(type="submit")
+        | Login with Discord
+

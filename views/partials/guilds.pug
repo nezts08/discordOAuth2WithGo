@@ -1,0 +1,43 @@
+section.section
+      .container
+        h1.title Dashboard de #{.Username}
+        p.subtitle Gestiona tus servidores de Discord
+
+        div.columns.is-multiline
+          | {{range .Guilds}}
+          div.column.is-4-desktop.is-6-tablet
+            div.box
+              article.media
+                div.media-left
+                  figure.image.is-64x64
+                    | {{if .Icon}}
+                    | <img class="is-rounded" src="https://cdn.discordapp.com/icons/{{.ID}}/{{.Icon}}.png" alt="{{.Name}}" onerror="this.src='/static/img/errorloading.png'">
+                    | {{else}}
+                    img.is-rounded(src="/static/img/errorloading.png" alt="No Icon")
+                    | {{end}}
+                
+                div.media-content
+                  div.content
+                    p.has-text-white
+                      strong.has-text-black {{.Name}} 
+                      br
+                      small.has-text-grey-light ID: {{.ID}}
+                  
+                  div.level.is-mobile
+                    div.level-left
+                      | {{if .InServer}}
+                      span.tag.is-success.is-light
+                        span Activo
+                      | {{else}}
+                      span.tag.is-danger.is-light No configurado
+                      | {{end}}
+
+              div.mt-4
+                | {{if .InServer}}
+                a.button.is-link.is-fullwidth(href="/dashboard/{{.ID}}") 
+                  strong Configurar
+                | {{else}}
+                a.button.is-primary.is-fullwidth.is-outlined(href="https://discord.com/oauth2/authorize?client_id={{$.ClientID}}&permissions=8&scope=bot&guild_id={{.ID}}&response_type=code&redirect_uri=https://localhost:3000/auth/redirect&state=inviting_bot")
+                  strong Invitar Bot
+                | {{end}}
+          | {{end}}

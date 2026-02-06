@@ -1,0 +1,14 @@
+# Binarios
+main
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Variables de entorno (¡MUY IMPORTANTE!)
+.env
+
+# Dependencias y Logs
+vendor/
+*.log

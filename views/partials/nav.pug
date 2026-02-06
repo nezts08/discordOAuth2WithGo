@@ -1,0 +1,15 @@
+nav.navbar.is-dark(role="navigation" aria-label="main navigation")
+  div.navbar-brand
+    a.navbar-item
+      h1 Welcome back, #{.Username}
+  
+  div#navbarBasicExample.navbar-menu
+    div.navbar-start
+      a.navbar-item(href="/") Home
+      a.navbar-item(href="/docs") Documentation
+    
+    div.navbar-end
+      div.navbar-item
+        form(action="/auth/logout" method="GET")
+          button.button.is-primary.is-rounded.my-custom-button(type="submit")
+            | Logout
